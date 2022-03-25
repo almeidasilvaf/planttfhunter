@@ -13,7 +13,7 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/tfhunter.html</loc>
+    <loc>/articles/vignette_tfhunter.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -23,6 +23,27 @@
   </url>
   <url>
     <loc>/news/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/annotate_pfam.html</loc>
+  </url>
+  <url>
+    <loc>/reference/classification_scheme.html</loc>
+  </url>
+  <url>
+    <loc>/reference/classify_tfs.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gsu.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gsu_annotation.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gsu_families.html</loc>
+  </url>
+  <url>
+    <loc>/reference/hmmer_is_installed.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
