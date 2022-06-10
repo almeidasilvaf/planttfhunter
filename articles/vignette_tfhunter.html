@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to tfhunter • tfhunter</title>
+<title>Genome-wide identification and classification of transcription factors in plant genomes • tfhunter</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to tfhunter">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Genome-wide identification and classification of transcription factors in plant genomes">
 <meta property="og:description" content="tfhunter">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -57,7 +57,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/vignette_tfhunter.html">Introduction to tfhunter</a>
+      <a href="../articles/vignette_tfhunter.html">Genome-wide identification and classification of transcription factors in plant genomes</a>
     </li>
   </ul>
 </li>
@@ -85,7 +85,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to tfhunter</h1>
+      <h1 data-toc-skip>Genome-wide identification and classification of
+transcription factors in plant genomes</h1>
                         <h4 data-toc-skip class="author">Fabricio
 Almeida-Silva</h4>
             <address class="author_afil">
@@ -94,7 +95,7 @@ Belgium<br><h4 data-toc-skip class="author">Yves
 Van de Peer</h4>
             <address class="author_afil">
       VIB-UGent Center for Plant Systems Biology, Ghent,
-Belgium<br><h4 data-toc-skip class="date">2022-03-25</h4>
+Belgium<br><h4 data-toc-skip class="date">2022-06-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/almeidasilvaf/tfhunter/blob/HEAD/vignettes/vignette_tfhunter.Rmd" class="external-link"><code>vignettes/vignette_tfhunter.Rmd</code></a></small>
       <div class="hidden name"><code>vignette_tfhunter.Rmd</code></div>
@@ -112,9 +113,9 @@ Belgium<br><h4 data-toc-skip class="date">2022-03-25</h4>
 elements in promoter regions of genes and regulate their expression.
 Identifying them in a genome is useful for a variety of reasons, such as
 exploring their evolutionary history across clades and inferring gene
-regulatory networks. <code>tfhunter</code> allows users to identify TFs
-from protein sequence data and classify them into families and
-subfamilies (when applicable).</p>
+regulatory networks. <code>tfhunter</code> allows users to identify
+plant TFs from whole-genome protein sequences and classify them into
+families and subfamilies (when applicable).</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -165,11 +166,11 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <table class="table">
 <colgroup>
 <col width="2%">
-<col width="12%">
 <col width="11%">
-<col width="24%">
-<col width="24%">
-<col width="24%">
+<col width="10%">
+<col width="22%">
+<col width="22%">
+<col width="30%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
@@ -186,7 +187,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">AP2</td>
 <td align="left">AP2 (&gt;=2) (PF00847)</td>
 <td align="left">NA</td>
-<td align="left">AP2 (&gt;=2) (PF00847)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">3</td>
@@ -194,7 +195,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">ERF</td>
 <td align="left">AP2 (1) (PF00847)</td>
 <td align="left">NA</td>
-<td align="left">AP2 (1) (PF00847)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">4</td>
@@ -202,7 +203,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">RAV</td>
 <td align="left">AP2 (PF00847) and B3 (PF02362)</td>
 <td align="left">NA</td>
-<td align="left">AP2 (PF00847) or B3 (PF02362)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">5</td>
@@ -210,7 +211,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">ARF</td>
 <td align="left">B3 (PF02362)</td>
 <td align="left">Auxin_resp (PF06507)</td>
-<td align="left">B3 (PF02362)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">6</td>
@@ -218,7 +219,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">B3</td>
 <td align="left">B3 (PF02362)</td>
 <td align="left">NA</td>
-<td align="left">B3 (PF02362)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">7</td>
@@ -226,7 +227,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">BBR-BPC</td>
 <td align="left">GAGA_bind (PF06217)</td>
 <td align="left">NA</td>
-<td align="left">GAGA_bind (PF06217)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">8</td>
@@ -234,7 +235,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">BES1</td>
 <td align="left">DUF822 (PF05687)</td>
 <td align="left">NA</td>
-<td align="left">DUF822 (PF05687)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">9</td>
@@ -242,7 +243,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">bHLH</td>
 <td align="left">HLH (PF00010)</td>
 <td align="left">NA</td>
-<td align="left">HLH (PF00010)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">10</td>
@@ -250,7 +251,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">bZIP</td>
 <td align="left">bZIP_1 (PF00170)</td>
 <td align="left">NA</td>
-<td align="left">bZIP_1 (PF00170)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">11</td>
@@ -258,7 +259,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">CO-like</td>
 <td align="left">zf-B_box (PF00643)</td>
 <td align="left">CCT (PF06203)</td>
-<td align="left">zf-B_box (PF00643)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">12</td>
@@ -266,7 +267,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">Dof</td>
 <td align="left">Zf-Dof (PF02701)</td>
 <td align="left">NA</td>
-<td align="left">Zf-Dof (PF02701)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">13</td>
@@ -274,7 +275,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">GATA</td>
 <td align="left">GATA-zf (PF00320)</td>
 <td align="left">NA</td>
-<td align="left">GATA-zf (PF00320)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">14</td>
@@ -282,7 +283,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">LSD</td>
 <td align="left">Zf-LSD1 (PF06943)</td>
 <td align="left">NA</td>
-<td align="left">Zf-LSD1 (PF06943)</td>
+<td align="left">Peptidase_C14 (PF00656)</td>
 </tr>
 <tr class="even">
 <td align="left">15</td>
@@ -290,7 +291,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">YABBY</td>
 <td align="left">YABBY (PF04690)</td>
 <td align="left">NA</td>
-<td align="left">YABBY (PF04690)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">16</td>
@@ -298,7 +299,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">C2H2</td>
 <td align="left">zf-C2H2 (PF00096)</td>
 <td align="left">NA</td>
-<td align="left">zf-C2H2 (PF00096)</td>
+<td align="left">RNase_T (PF00929)</td>
 </tr>
 <tr class="even">
 <td align="left">17</td>
@@ -306,7 +307,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">C3H</td>
 <td align="left">Zf-CCCH (PF00642)</td>
 <td align="left">NA</td>
-<td align="left">Zf-CCCH (PF00642)</td>
+<td align="left">RRM_1 (PF00076) or Helicase_C (PF00271)</td>
 </tr>
 <tr class="odd">
 <td align="left">18</td>
@@ -314,7 +315,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">CAMTA</td>
 <td align="left">CG1 (PF03859)</td>
 <td align="left">NA</td>
-<td align="left">CG1 (PF03859)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">19</td>
@@ -322,7 +323,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">CPP</td>
 <td align="left">TCR (PF03638)</td>
 <td align="left">NA</td>
-<td align="left">TCR (PF03638)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">20</td>
@@ -330,7 +331,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">DBB</td>
 <td align="left">zf-B_box (&gt;=2) (PF00643)</td>
 <td align="left">NA</td>
-<td align="left">zf-B_box (&gt;=2) (PF00643)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">21</td>
@@ -338,7 +339,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">E2F/DP</td>
 <td align="left">E2F_TDP (PF02319)</td>
 <td align="left">NA</td>
-<td align="left">E2F_TDP (PF02319)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">22</td>
@@ -346,7 +347,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">EIL</td>
 <td align="left">EIN3 (PF04873)</td>
 <td align="left">NA</td>
-<td align="left">EIN3 (PF04873)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">23</td>
@@ -354,7 +355,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">FAR1</td>
 <td align="left">FAR1 (PF03101)</td>
 <td align="left">NA</td>
-<td align="left">FAR1 (PF03101)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">24</td>
@@ -362,7 +363,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">ARR-B</td>
 <td align="left">G2-like</td>
 <td align="left">Response_reg (PF00072)</td>
-<td align="left">G2-like</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">25</td>
@@ -370,7 +371,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">G2-like</td>
 <td align="left">G2-like</td>
 <td align="left">NA</td>
-<td align="left">G2-like</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">26</td>
@@ -378,7 +379,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">GeBP</td>
 <td align="left">DUF573 (PF04504)</td>
 <td align="left">NA</td>
-<td align="left">DUF573 (PF04504)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">27</td>
@@ -386,7 +387,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">GRAS</td>
 <td align="left">GRAS (PF03514)</td>
 <td align="left">NA</td>
-<td align="left">GRAS (PF03514)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">28</td>
@@ -394,7 +395,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">GRF</td>
 <td align="left">WRC (PF08879)</td>
 <td align="left">QLQ (PF08880)</td>
-<td align="left">WRC (PF08879)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">29</td>
@@ -402,7 +403,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">HD-ZIP</td>
 <td align="left">Homeobox (PF00046)</td>
 <td align="left">HD-ZIP_I/II or SMART (PF01852)</td>
-<td align="left">Homeobox (PF00046)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">30</td>
@@ -410,7 +411,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">TALE</td>
 <td align="left">Homeobox (PF00046)</td>
 <td align="left">BELL or ELK (PF03789)</td>
-<td align="left">Homeobox (PF00046)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">31</td>
@@ -418,7 +419,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">WOX</td>
 <td align="left">homeobox (PF00046)</td>
 <td align="left">Wus type homeobox</td>
-<td align="left">homeobox (PF00046)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">32</td>
@@ -426,7 +427,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">HB-PHD</td>
 <td align="left">homeobox (PF00046)</td>
 <td align="left">PHD (PF00628)</td>
-<td align="left">homeobox (PF00046)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">33</td>
@@ -434,7 +435,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">HB-other</td>
 <td align="left">homeobox (PF00046)</td>
 <td align="left">NA</td>
-<td align="left">homeobox (PF00046)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">34</td>
@@ -442,7 +443,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">HRT-like</td>
 <td align="left">HRT-like</td>
 <td align="left">NA</td>
-<td align="left">HRT-like</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">35</td>
@@ -450,7 +451,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">HSF</td>
 <td align="left">HSF_dna_bind (PF00447)</td>
 <td align="left">NA</td>
-<td align="left">HSF_dna_bind (PF00447)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">36</td>
@@ -458,7 +459,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">LBD (AS2/LOB)</td>
 <td align="left">DUF260 (PF03195)</td>
 <td align="left">NA</td>
-<td align="left">DUF260 (PF03195)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">37</td>
@@ -466,7 +467,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">LFY</td>
 <td align="left">FLO_LFY (PF01698)</td>
 <td align="left">NA</td>
-<td align="left">FLO_LFY (PF01698)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">38</td>
@@ -474,7 +475,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">M_type</td>
 <td align="left">SRF-TF (PF00319)</td>
 <td align="left">NA</td>
-<td align="left">SRF-TF (PF00319)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">39</td>
@@ -482,7 +483,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">MIKC</td>
 <td align="left">SRF-TF (PF00319)</td>
 <td align="left">K-box (PF01486)</td>
-<td align="left">SRF-TF (PF00319)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">40</td>
@@ -490,7 +491,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">MYB</td>
 <td align="left">Myb_dna_bind (&gt;=2) (PF00249)</td>
 <td align="left">NA</td>
-<td align="left">Myb_dna_bind (&gt;=2) (PF00249)</td>
+<td align="left">SWIRM (PF04433)</td>
 </tr>
 <tr class="even">
 <td align="left">41</td>
@@ -498,7 +499,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">MYB_related</td>
 <td align="left">Myb_dna_bind (1) (PF00249)</td>
 <td align="left">NA</td>
-<td align="left">Myb_dna_bind (1) (PF00249)</td>
+<td align="left">SWIRM (PF04433)</td>
 </tr>
 <tr class="odd">
 <td align="left">42</td>
@@ -506,7 +507,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NAC</td>
 <td align="left">NAM (PF02365)</td>
 <td align="left">NA</td>
-<td align="left">NAM (PF02365)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">43</td>
@@ -514,7 +515,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NF-X1</td>
 <td align="left">Zf-NF-X1 (PF01422)</td>
 <td align="left">NA</td>
-<td align="left">Zf-NF-X1 (PF01422)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">44</td>
@@ -522,7 +523,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NF-YA</td>
 <td align="left">CBFB_NFYA (PF02045)</td>
 <td align="left">NA</td>
-<td align="left">CBFB_NFYA (PF02045)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">45</td>
@@ -530,7 +531,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NF-YB</td>
 <td align="left">NF-YB</td>
 <td align="left">NA</td>
-<td align="left">NF-YB</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">46</td>
@@ -538,7 +539,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NF-YC</td>
 <td align="left">NF-YC</td>
 <td align="left">NA</td>
-<td align="left">NF-YC</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">47</td>
@@ -546,7 +547,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">Nin-like</td>
 <td align="left">RWP-RK (PF02042)</td>
 <td align="left">NA</td>
-<td align="left">RWP-RK (PF02042)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">48</td>
@@ -554,7 +555,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">NZZ/SPL</td>
 <td align="left">NOZZLE (PF08744)</td>
 <td align="left">NA</td>
-<td align="left">NOZZLE (PF08744)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">49</td>
@@ -562,7 +563,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">S1Fa-like</td>
 <td align="left">S1FA (PF04689)</td>
 <td align="left">NA</td>
-<td align="left">S1FA (PF04689)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">50</td>
@@ -570,7 +571,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">SAP</td>
 <td align="left">SAP</td>
 <td align="left">NA</td>
-<td align="left">SAP</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">51</td>
@@ -578,7 +579,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">SBP</td>
 <td align="left">SBP (PF03110)</td>
 <td align="left">NA</td>
-<td align="left">SBP (PF03110)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">52</td>
@@ -586,7 +587,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">SRS</td>
 <td align="left">DUF702 (PF05142)</td>
 <td align="left">NA</td>
-<td align="left">DUF702 (PF05142)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">53</td>
@@ -594,7 +595,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">STAT</td>
 <td align="left">STAT</td>
 <td align="left">NA</td>
-<td align="left">STAT</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">54</td>
@@ -602,7 +603,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">TCP</td>
 <td align="left">TCP (PF03634)</td>
 <td align="left">NA</td>
-<td align="left">TCP (PF03634)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">55</td>
@@ -610,7 +611,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">Trihelix</td>
 <td align="left">Trihelix</td>
 <td align="left">NA</td>
-<td align="left">Trihelix</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">56</td>
@@ -618,7 +619,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">VOZ</td>
 <td align="left">VOZ</td>
 <td align="left">NA</td>
-<td align="left">VOZ</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">57</td>
@@ -626,7 +627,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">Whirly</td>
 <td align="left">Whirly (PF08536)</td>
 <td align="left">NA</td>
-<td align="left">Whirly (PF08536)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">58</td>
@@ -634,7 +635,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">WRKY</td>
 <td align="left">WRKY (PF03106)</td>
 <td align="left">NA</td>
-<td align="left">WRKY (PF03106)</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">59</td>
@@ -642,7 +643,7 @@ the one used by PlantTFDB <span class="citation">(Jin et al.
 <td align="left">ZF-HD</td>
 <td align="left">ZF-HD_dimer (PF04770)</td>
 <td align="left">NA</td>
-<td align="left">ZF-HD_dimer (PF04770)</td>
+<td align="left">NA</td>
 </tr>
 </tbody>
 </table>
@@ -672,11 +673,11 @@ proteomes.</p>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span>
 <span class="co">#&gt;          Gene  Domain</span>
 <span class="co">#&gt; 1 gsu144370.1 PF00010</span>
-<span class="co">#&gt; 2 gsu144370.1 PF00010</span>
-<span class="co">#&gt; 3 gsu144370.1 PF00010</span>
-<span class="co">#&gt; 4 gsu140730.1 PF00010</span>
-<span class="co">#&gt; 5 gsu127100.1 PF00046</span>
-<span class="co">#&gt; 6 gsu127100.1 PF00046</span></code></pre></div>
+<span class="co">#&gt; 2 gsu140730.1 PF00010</span>
+<span class="co">#&gt; 3 gsu127100.1 PF00046</span>
+<span class="co">#&gt; 4 gsu109490.1 PF00046</span>
+<span class="co">#&gt; 5  AIG92462.1 PF00072</span>
+<span class="co">#&gt; 6  AIG92471.1 PF00072</span></code></pre></div>
 <p>Now that we have our TF-related domains, we can classify TFs in
 families with the function <code><a href="../reference/classify_tfs.html">classify_tfs()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -687,13 +688,13 @@ families with the function <code><a href="../reference/classify_tfs.html">classi
 <span class="op">}</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span>
-<span class="co">#&gt;         Gene      Family</span>
-<span class="co">#&gt; 1 gsu04730.1    Nin-like</span>
-<span class="co">#&gt; 2 gsu05000.1    Nin-like</span>
-<span class="co">#&gt; 3 gsu06140.1     G2-like</span>
-<span class="co">#&gt; 4 gsu06140.1 MYB-related</span>
-<span class="co">#&gt; 5 gsu06160.1       NF-YC</span>
-<span class="co">#&gt; 6 gsu09770.1         C3H</span></code></pre></div>
+<span class="co">#&gt;          Gene      Family</span>
+<span class="co">#&gt; 1  gsu04730.1    Nin-like</span>
+<span class="co">#&gt; 2  gsu05000.1    Nin-like</span>
+<span class="co">#&gt; 3  gsu06140.1     G2-like</span>
+<span class="co">#&gt; 4  gsu06140.1 MYB-related</span>
+<span class="co">#&gt; 5  gsu09770.1         C3H</span>
+<span class="co">#&gt; 6 gsu100410.1    Nin-like</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -749,8 +750,7 @@ function <code>readAAStringSet()</code> from the Biostrings package.<a href="#fn
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
