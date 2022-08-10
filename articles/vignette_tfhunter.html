@@ -95,7 +95,7 @@ Belgium<br><h4 data-toc-skip class="author">Yves
 Van de Peer</h4>
             <address class="author_afil">
       VIB-UGent Center for Plant Systems Biology, Ghent,
-Belgium<br><h4 data-toc-skip class="date">2022-06-10</h4>
+Belgium<br><h4 data-toc-skip class="date">2022-08-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/almeidasilvaf/tfhunter/blob/HEAD/vignettes/vignette_tfhunter.Rmd" class="external-link"><code>vignettes/vignette_tfhunter.Rmd</code></a></small>
       <div class="hidden name"><code>vignette_tfhunter.Rmd</code></div>
@@ -115,20 +115,21 @@ Identifying them in a genome is useful for a variety of reasons, such as
 exploring their evolutionary history across clades and inferring gene
 regulatory networks. <code>tfhunter</code> allows users to identify
 plant TFs from whole-genome protein sequences and classify them into
-families and subfamilies (when applicable).</p>
+families and subfamilies (when applicable) using the classification
+scheme implemented in <a href="http://planttfdb.gao-lab.org/" class="external-link">PlantTFDB</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install <code>tfhunter</code> with the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
-  <span class="op">}</span>
-
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"tfhunter"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"tfhunter"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">tfhunter</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">tfhunter</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-description">Data description<a class="anchor" aria-label="anchor" href="#data-description"></a>
@@ -139,21 +140,21 @@ was downloaded from the PLAZA Diatoms database <span class="citation">(Osuna-Cru
 keep only TFs for demonstration purposes. The object <code>gsu</code>
 stores the protein sequences in an AAStringSet object.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span>
-<span class="va">gsu</span>
-<span class="co">#&gt; AAStringSet object of length 290:</span>
-<span class="co">#&gt;       width seq                                             names               </span>
-<span class="co">#&gt;   [1]   383 MSVLLQTSRGDIVVDLFTDLAP...EKALFQEHRRSSYSKTSKRYK* gsu00340.1</span>
-<span class="co">#&gt;   [2]   301 MESMSQTKRWSCVIYQVDSILP...PNISLQQLLGDEDEISWSGLP* gsu04730.1</span>
-<span class="co">#&gt;   [3]   232 MEKGPCSHKWKQLHVGDYQHDN...PNISLQQLLGDEDEISWSGLP* gsu05000.1</span>
-<span class="co">#&gt;   [4]   340 MDVPSYRFECTPLVEVKKEARD...EVTQSSTRNCNDKEWNPNANE* gsu06140.1</span>
-<span class="co">#&gt;   [5]   120 MAPKERSKPKSRSSKAGLQFPV...SGGVLPNVHPNLLPKKKAKEE* gsu06160.1</span>
-<span class="co">#&gt;   ...   ... ...</span>
-<span class="co">#&gt; [286]   394 MSKLEAASDSGSLKTSSCSFQE...NETNSHDKPGEDRMNIQENTS* gsu98790.1</span>
-<span class="co">#&gt; [287]   365 MITEVDNPMSFVHSEHFMNYSS...RRHSRLPVFQTLEEKSDIHSK* gsu99250.1</span>
-<span class="co">#&gt; [288]   365 MITEVDNPMSFVHSEHFMNYSS...RRHSRLPVFQTLEEKSDIHSK* gsu99270.1</span>
-<span class="co">#&gt; [289]   284 MTSFYIKKGITFSSIVYNHNYK...LFQRIIEINKNYNPLIQLQRI* AIG92462.1</span>
-<span class="co">#&gt; [290]   219 MKYKLLVIDDELSIRQSLKKYL...TFTRSRTELVRYAIKNNLIIE* AIG92471.1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span>
+<span><span class="va">gsu</span></span>
+<span><span class="co">#&gt; AAStringSet object of length 290:</span></span>
+<span><span class="co">#&gt;       width seq                                             names               </span></span>
+<span><span class="co">#&gt;   [1]   383 MSVLLQTSRGDIVVDLFTDLAP...EKALFQEHRRSSYSKTSKRYK* gsu00340.1</span></span>
+<span><span class="co">#&gt;   [2]   301 MESMSQTKRWSCVIYQVDSILP...PNISLQQLLGDEDEISWSGLP* gsu04730.1</span></span>
+<span><span class="co">#&gt;   [3]   232 MEKGPCSHKWKQLHVGDYQHDN...PNISLQQLLGDEDEISWSGLP* gsu05000.1</span></span>
+<span><span class="co">#&gt;   [4]   340 MDVPSYRFECTPLVEVKKEARD...EVTQSSTRNCNDKEWNPNANE* gsu06140.1</span></span>
+<span><span class="co">#&gt;   [5]   120 MAPKERSKPKSRSSKAGLQFPV...SGGVLPNVHPNLLPKKKAKEE* gsu06160.1</span></span>
+<span><span class="co">#&gt;   ...   ... ...</span></span>
+<span><span class="co">#&gt; [286]   394 MSKLEAASDSGSLKTSSCSFQE...NETNSHDKPGEDRMNIQENTS* gsu98790.1</span></span>
+<span><span class="co">#&gt; [287]   365 MITEVDNPMSFVHSEHFMNYSS...RRHSRLPVFQTLEEKSDIHSK* gsu99250.1</span></span>
+<span><span class="co">#&gt; [288]   365 MITEVDNPMSFVHSEHFMNYSS...RRHSRLPVFQTLEEKSDIHSK* gsu99270.1</span></span>
+<span><span class="co">#&gt; [289]   284 MTSFYIKKGITFSSIVYNHNYK...LFQRIIEINKNYNPLIQLQRI* AIG92462.1</span></span>
+<span><span class="co">#&gt; [290]   219 MKYKLLVIDDELSIRQSLKKYL...TFTRSRTELVRYAIKNNLIIE* AIG92471.1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="algorithm-description">Algorithm description<a class="anchor" aria-label="anchor" href="#algorithm-description"></a>
@@ -663,38 +664,38 @@ machine and set <code>mode = "local"</code>, as domain annotation with
 the web server can take several minutes, especially for large
 proteomes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Annotate TF-related domains using a local installation of HMMER</span>
-<span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">gsu_annotation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/annotate_pfam.html">annotate_pfam</a></span><span class="op">(</span><span class="va">gsu</span>, mode <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span>
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span>
-<span class="co">#&gt;          Gene  Domain</span>
-<span class="co">#&gt; 1 gsu144370.1 PF00010</span>
-<span class="co">#&gt; 2 gsu140730.1 PF00010</span>
-<span class="co">#&gt; 3 gsu127100.1 PF00046</span>
-<span class="co">#&gt; 4 gsu109490.1 PF00046</span>
-<span class="co">#&gt; 5  AIG92462.1 PF00072</span>
-<span class="co">#&gt; 6  AIG92471.1 PF00072</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Annotate TF-related domains using a local installation of HMMER</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">gsu_annotation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/annotate_pfam.html">annotate_pfam</a></span><span class="op">(</span><span class="va">gsu</span>, mode <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          Gene  Domain</span></span>
+<span><span class="co">#&gt; 1 gsu144370.1 PF00010</span></span>
+<span><span class="co">#&gt; 2 gsu140730.1 PF00010</span></span>
+<span><span class="co">#&gt; 3 gsu127100.1 PF00046</span></span>
+<span><span class="co">#&gt; 4 gsu109490.1 PF00046</span></span>
+<span><span class="co">#&gt; 5  AIG92462.1 PF00072</span></span>
+<span><span class="co">#&gt; 6  AIG92471.1 PF00072</span></span></code></pre></div>
 <p>Now that we have our TF-related domains, we can classify TFs in
 families with the function <code><a href="../reference/classify_tfs.html">classify_tfs()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">gsu_families</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_tfs.html">classify_tfs</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span>
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span>
-<span class="co">#&gt;          Gene      Family</span>
-<span class="co">#&gt; 1  gsu04730.1    Nin-like</span>
-<span class="co">#&gt; 2  gsu05000.1    Nin-like</span>
-<span class="co">#&gt; 3  gsu06140.1     G2-like</span>
-<span class="co">#&gt; 4  gsu06140.1 MYB-related</span>
-<span class="co">#&gt; 5  gsu09770.1         C3H</span>
-<span class="co">#&gt; 6 gsu100410.1    Nin-like</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">gsu_families</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_tfs.html">classify_tfs</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          Gene      Family</span></span>
+<span><span class="co">#&gt; 1  gsu04730.1    Nin-like</span></span>
+<span><span class="co">#&gt; 2  gsu05000.1    Nin-like</span></span>
+<span><span class="co">#&gt; 3  gsu06140.1     G2-like</span></span>
+<span><span class="co">#&gt; 4  gsu06140.1 MYB-related</span></span>
+<span><span class="co">#&gt; 5  gsu09770.1         C3H</span></span>
+<span><span class="co">#&gt; 6 gsu100410.1    Nin-like</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -750,7 +751,7 @@ function <code>readAAStringSet()</code> from the Biostrings package.<a href="#fn
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

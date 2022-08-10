@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">annotate_pfam</span><span class="op">(</span>seq <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"web"</span>, evalue <span class="op">=</span> <span class="fl">1e-05</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">annotate_pfam</span><span class="op">(</span>seq <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"web"</span>, evalue <span class="op">=</span> <span class="fl">1e-05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -72,25 +72,35 @@
 <dd><p>An AAStringSet object as returned
 by <code><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html" class="external-link">Biostrings::readAAStringSet()</a></code>. The sequences in this object must
 represent only the translated sequences of primary (or longest) transcripts.</p></dd>
+
+
 <dt>mode</dt>
 <dd><p>Character specifying how to annotate PFAM domains. One of
 'web' (default) or 'local'. If 'local', you must have hmmer installed in
 your machine, and the command 'hmmsearch' must be in your PATH.</p></dd>
+
+
 <dt>evalue</dt>
 <dd><p>Numeric indicating the E-value threshold for hmmsearch
 to be used for domains without pre-defined domain cutoffs.
 Only valid if parameter mode = 'local'. Default: 1e-05.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A 2-column data frame with the variables <strong>Gene</strong>and <strong>Domain</strong>, which contain gene IDs and domain IDs, respectively.</p>
+    
+
+<p>A 2-column data frame with the variables <strong>Gene</strong></p>
+
+
+<p>and <strong>Domain</strong>, which contain gene IDs and domain IDs, respectively.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">seq</span> <span class="op">&lt;-</span> <span class="va">gsu</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
-<span class="r-in"><span class="fu">annotate_pfam</span><span class="op">(</span><span class="va">seq</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">seq</span> <span class="op">&lt;-</span> <span class="va">gsu</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu">annotate_pfam</span><span class="op">(</span><span class="va">seq</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Gene     Domain</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 gsu00340.1 PF00160.24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 gsu00340.1 PF00076.25</span>
@@ -114,7 +124,7 @@ Only valid if parameter mode = 'local'. Default: 1e-05.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
