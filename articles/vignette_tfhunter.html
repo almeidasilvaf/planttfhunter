@@ -109,21 +109,23 @@ Ghent, Belgium</p>
 elements in promoter regions of genes and regulate their expression.
 Identifying them in a genome is useful for a variety of reasons, such as
 exploring their evolutionary history across clades and inferring gene
-regulatory networks. <code>tfhunter</code> allows users to identify
-plant TFs from whole-genome protein sequences and classify them into
-families and subfamilies (when applicable) using the classification
-scheme implemented in <a href="http://planttfdb.gao-lab.org/" class="external-link">PlantTFDB</a>.</p>
+regulatory networks. <em><a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">tfhunter</a></em>
+allows users to identify plant TFs from whole-genome protein sequences
+and classify them into families and subfamilies (when applicable) using
+the classification scheme implemented in <a href="http://planttfdb.gao-lab.org/" class="external-link">PlantTFDB</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install <code>tfhunter</code> with the following code:</p>
+<p>You can install <em><a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">tfhunter</a></em> with
+the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"tfhunter"</span><span class="op">)</span></span></code></pre></div>
+<p>Loading package after installation:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">tfhunter</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -134,7 +136,7 @@ scheme implemented in <a href="http://planttfdb.gao-lab.org/" class="external-li
 species <em>Galdieria sulphuraria</em> as an example. The proteome file
 was downloaded from the PLAZA Diatoms database <span class="citation">(Osuna-Cruz et al. 2020)</span>, and it was filtered to
 keep only TFs for demonstration purposes. The object <code>gsu</code>
-stores the protein sequences in an AAStringSet object.</p>
+stores the protein sequences in an <code>AAStringSet</code> object.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span>
 <span><span class="va">gsu</span></span>
@@ -652,19 +654,16 @@ scheme in your R session by loading the data frame
 </h2>
 <p>To identify TFs from protein sequence data, you will use the function
 <code><a href="../reference/annotate_pfam.html">annotate_pfam()</a></code>. This function takes as input an
-AAStringSet object <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If you have protein sequences in a
-FASTA file, you can read them into an AAStringSet object with the
-function &lt;code&gt;readAAStringSet()&lt;/code&gt; from the Biostrings package.&lt;/p&gt;"><sup>2</sup></a> and returns a data frame of protein domains
+<code>AAStringSet</code> object <a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If you have protein sequences in a
+FASTA file, you can read them into an &lt;code&gt;AAStringSet&lt;/code&gt; object
+with the function &lt;code&gt;readAAStringSet()&lt;/code&gt; from the &lt;em&gt;&lt;a href="https://bioconductor.org/packages/3.15/Biostrings" class="external-link"&gt;Biostrings&lt;/a&gt;&lt;/em&gt;
+package.&lt;/p&gt;'><sup>2</sup></a> and returns a data frame of protein domains
 associated with each sequence. The HMMER program <span class="citation">(Finn, Clements, and Eddy 2011)</span> is used to scan
-protein sequences for the presence of TF-related protein domains, and it
-can be run either through the web server (by setting
-<code>mode = web</code>) or through a local HMMER installation
-(<code>mode = "local"</code>). We advise you to install HMMER in your
-machine and set <code>mode = "local"</code>, as domain annotation with
-the web server can take several minutes, especially for large
-proteomes.</p>
+protein sequences for the presence of DNA-binding protein domains, as
+well as auxiliary and forbidden domains. Pre-built HMM profiles can be
+found in the <em>extdata/</em> directory of this package.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"gsu_annotation"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Annotate TF-related domains using a local installation of HMMER</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -685,7 +684,7 @@ families with the function <code><a href="../reference/classify_tfs.html">classi
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Classify TFs into families and subfamilies</span></span>
+<span><span class="co"># Classify TFs into families</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">gsu_families</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_tfs.html">classify_tfs</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
 <span><span class="op">}</span> </span>
@@ -698,7 +697,92 @@ families with the function <code><a href="../reference/classify_tfs.html">classi
 <span><span class="co">#&gt; 3  gsu06140.1     G2-like</span></span>
 <span><span class="co">#&gt; 4  gsu06140.1 MYB-related</span></span>
 <span><span class="co">#&gt; 5  gsu09770.1         C3H</span></span>
-<span><span class="co">#&gt; 6 gsu100410.1    Nin-like</span></span></code></pre></div>
+<span><span class="co">#&gt; 6 gsu100410.1    Nin-like</span></span>
+<span></span>
+<span><span class="co"># Count number of TFs per family</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">$</span><span class="va">Family</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;        bHLH        bZIP        C2H2         C3H         CPP      E2F/DP </span></span>
+<span><span class="co">#&gt;           2           8           4          13           3           8 </span></span>
+<span><span class="co">#&gt;     G2-like        GATA    HB-other         HSF         LSD      M-type </span></span>
+<span><span class="co">#&gt;           2           8           2           6           3           1 </span></span>
+<span><span class="co">#&gt;         MYB MYB-related       NF-X1       NF-YA       NF-YB       NF-YC </span></span>
+<span><span class="co">#&gt;          16          28           1           1           4           5 </span></span>
+<span><span class="co">#&gt;    Nin-like </span></span>
+<span><span class="co">#&gt;          10</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 class="unnumbered" id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
+</h2>
+<p>This document was created under the following conditions:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
+<span><span class="co">#&gt;  version  R version 4.2.1 (2022-06-23)</span></span>
+<span><span class="co">#&gt;  os       Ubuntu 20.04.4 LTS</span></span>
+<span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
+<span><span class="co">#&gt;  ui       X11</span></span>
+<span><span class="co">#&gt;  language en</span></span>
+<span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
+<span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
+<span><span class="co">#&gt;  tz       UTC</span></span>
+<span><span class="co">#&gt;  date     2022-10-06</span></span>
+<span><span class="co">#&gt;  pandoc   2.18 @ /usr/local/bin/ (via rmarkdown)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package         </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version </span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
+<span><span class="co">#&gt;  BiocGenerics       0.42.0   <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  BiocManager        1.30.18  <span style="color: #555555;">2022-05-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  BiocStyle        * 2.24.0   <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  Biostrings         2.64.1   <span style="color: #555555;">2022-08-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  bitops             1.0-7    <span style="color: #555555;">2021-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.1.0)</span></span></span>
+<span><span class="co">#&gt;  bookdown           0.29     <span style="color: #555555;">2022-09-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  bslib              0.4.0    <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  cachem             1.0.6    <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  cli                3.4.1    <span style="color: #555555;">2022-09-23</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  crayon             1.5.2    <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  desc               1.4.2    <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  digest             0.6.29   <span style="color: #555555;">2021-12-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  evaluate           0.16     <span style="color: #555555;">2022-08-09</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  fastmap            1.1.0    <span style="color: #555555;">2021-01-25</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  fs                 1.5.2    <span style="color: #555555;">2021-12-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDb       1.32.4   <span style="color: #555555;">2022-09-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDbData   1.2.8    <span style="color: #555555;">2022-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  highr              0.9      <span style="color: #555555;">2021-04-16</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  htmltools          0.5.3    <span style="color: #555555;">2022-07-18</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  IRanges            2.30.1   <span style="color: #555555;">2022-08-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  jquerylib          0.1.4    <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  jsonlite           1.8.2    <span style="color: #555555;">2022-10-02</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  knitr              1.40     <span style="color: #555555;">2022-08-24</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  magrittr           2.0.3    <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  memoise            2.0.1    <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  pkgdown            2.0.6    <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  purrr              0.3.4    <span style="color: #555555;">2020-04-17</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  R6                 2.5.1    <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  ragg               1.2.3    <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  RCurl              1.98-1.9 <span style="color: #555555;">2022-10-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  rlang              1.0.6    <span style="color: #555555;">2022-09-24</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown          2.16     <span style="color: #555555;">2022-08-24</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  rprojroot          2.0.3    <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  S4Vectors          0.34.0   <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  sass               0.4.2    <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  sessioninfo        1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  stringi            1.7.8    <span style="color: #555555;">2022-07-11</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  stringr            1.4.1    <span style="color: #555555;">2022-08-20</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  systemfonts        1.0.4    <span style="color: #555555;">2022-02-11</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  textshaping        0.3.6    <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  tfhunter         * 0.99.0   <span style="color: #555555;">2022-10-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  xfun               0.33     <span style="color: #555555;">2022-09-12</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  XVector            0.36.0   <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  yaml               2.3.5    <span style="color: #555555;">2022-02-21</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.0)</span></span></span>
+<span><span class="co">#&gt;  zlibbioc           1.42.0   <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [1] /__w/_temp/Library</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/site-library</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [3] /usr/local/lib/R/library</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
