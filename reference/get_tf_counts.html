@@ -108,7 +108,9 @@ frequencies per family in each species, as well as species metadata (if
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get SummarizedExperiment object</span></span></span>
-<span class="r-in"><span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu">get_tf_counts</span><span class="op">(</span><span class="va">proteomes</span>, <span class="va">species_metadata</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu">get_tf_counts</span><span class="op">(</span><span class="va">proteomes</span>, <span class="va">species_metadata</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
