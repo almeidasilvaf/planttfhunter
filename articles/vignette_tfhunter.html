@@ -84,19 +84,15 @@
                         <h4 data-toc-skip class="author">Fabricio
 Almeida-Silva</h4>
             <address class="author_afil">
-      VIB-UGent Center for Plant Systems Biology, Ghent,
-BelgiumDepartment of Plant Biotechnology and Bioinformatics, Ghent
-University, Ghent,
-Belgium<br><h4 data-toc-skip class="author">Yves
+      <p>VIB-UGent Center for Plant Systems Biology, Ghent University,
+Ghent,
+Belgium</p>
+<br><h4 data-toc-skip class="author">Yves
 Van de Peer</h4>
             <address class="author_afil">
-      VIB-UGent Center for Plant Systems Biology, Ghent,
-BelgiumDepartment of Plant Biotechnology and Bioinformatics, Ghent
-University, Ghent, BelgiumCollege of Horticulture, Academy for Advanced
-Interdisciplinary Studies, Nanjing Agricultural University, Nanjing,
-ChinaCenter for Microbial Ecology and Genomics, Department of
-Biochemistry, Genetics and Microbiology, University of Pretoria,
-Pretoria, South Africa<br><h4 data-toc-skip class="date">2022-08-28</h4>
+      <p>VIB-UGent Center for Plant Systems Biology, Ghent University,
+Ghent, Belgium</p>
+<br><h4 data-toc-skip class="date">2022-10-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/almeidasilvaf/tfhunter/blob/HEAD/vignettes/vignette_tfhunter.Rmd" class="external-link"><code>vignettes/vignette_tfhunter.Rmd</code></a></small>
       <div class="d-none name"><code>vignette_tfhunter.Rmd</code></div>
@@ -668,13 +664,14 @@ machine and set <code>mode = "local"</code>, as domain annotation with
 the web server can take several minutes, especially for large
 proteomes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Annotate TF-related domains using a local installation of HMMER</span></span>
-<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">gsu_annotation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/annotate_pfam.html">annotate_pfam</a></span><span class="op">(</span><span class="va">gsu</span>, mode <span class="op">=</span> <span class="st">"local"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"gsu_annotation"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Annotate TF-related domains using a local installation of HMMER</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">gsu_annotation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/annotate_pfam.html">annotate_pfam</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span>
+<span><span class="op">}</span> </span>
+<span></span>
+<span><span class="co"># Take a look at the first few lines of the output</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          Gene  Domain</span></span>
 <span><span class="co">#&gt; 1 gsu144370.1 PF00010</span></span>
@@ -686,12 +683,14 @@ proteomes.</p>
 <p>Now that we have our TF-related domains, we can classify TFs in
 families with the function <code><a href="../reference/classify_tfs.html">classify_tfs()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">gsu_families</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_tfs.html">classify_tfs</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Classify TFs into families and subfamilies</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">gsu_families</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_tfs.html">classify_tfs</a></span><span class="op">(</span><span class="va">gsu_annotation</span><span class="op">)</span></span>
+<span><span class="op">}</span> </span>
+<span></span>
+<span><span class="co"># Take a look at the output</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gsu_families</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          Gene      Family</span></span>
 <span><span class="co">#&gt; 1  gsu04730.1    Nin-like</span></span>

@@ -57,7 +57,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">annotate_pfam</span><span class="op">(</span>seq <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"web"</span>, evalue <span class="op">=</span> <span class="fl">1e-05</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">annotate_pfam</span><span class="op">(</span>seq <span class="op">=</span> <span class="cn">NULL</span>, evalue <span class="op">=</span> <span class="fl">1e-05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -66,12 +66,6 @@
 <dd><p>An AAStringSet object as returned
 by <code><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html" class="external-link">Biostrings::readAAStringSet()</a></code>. The sequences in this object must
 represent only the translated sequences of primary (or longest) transcripts.</p></dd>
-
-
-<dt>mode</dt>
-<dd><p>Character specifying how to annotate PFAM domains. One of
-'web' (default) or 'local'. If 'local', you must have hmmer installed in
-your machine, and the command 'hmmsearch' must be in your PATH.</p></dd>
 
 
 <dt>evalue</dt>
@@ -94,16 +88,15 @@ Only valid if parameter mode = 'local'. Default: 1e-05.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">seq</span> <span class="op">&lt;-</span> <span class="va">gsu</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="fu">annotate_pfam</span><span class="op">(</span><span class="va">seq</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Gene     Domain</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 gsu00340.1 PF00160.24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 gsu00340.1 PF00076.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 gsu04730.1 PF02042.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 gsu05000.1 PF02042.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 gsu06140.1 PF00249.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 gsu06160.1  PF16211.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 gsu06160.1 PF00125.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 gsu06160.1 PF00808.26</span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu">annotate_pfam</span><span class="op">(</span><span class="va">seq</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         Gene  Domain</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 gsu06140.1 PF00249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 gsu05000.1 PF02042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 gsu04730.1 PF02042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 gsu00340.1 PF00076</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 gsu06140.1 G2-like</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
