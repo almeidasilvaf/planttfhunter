@@ -824,8 +824,12 @@ will return an error.</p>
 species metadata, we can execute <code><a href="../reference/get_tf_counts.html">get_tf_counts()</a></code> as
 below:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get TF counts per family in each species as a SummarizedExperiment object</span></span>
-<span><span class="va">tf_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_tf_counts.html">get_tf_counts</a></span><span class="op">(</span><span class="va">proteomes</span>, <span class="va">species_metadata</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tf_counts</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get TF counts per family in each species as a SummarizedExperiment object</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/hmmer_is_installed.html">hmmer_is_installed</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">tf_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_tf_counts.html">get_tf_counts</a></span><span class="op">(</span><span class="va">proteomes</span>, <span class="va">species_metadata</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># Take a look at the SummarizedExperiment object</span></span>
 <span><span class="va">tf_counts</span></span>
