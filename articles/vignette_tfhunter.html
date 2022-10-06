@@ -133,10 +133,12 @@ the following code:</p>
 <h2 id="data-description">Data description<a class="anchor" aria-label="anchor" href="#data-description"></a>
 </h2>
 <p>In this vignette, we will use protein sequences of TFs from the algae
-species <em>Galdieria sulphuraria</em> as an example. The proteome file
-was downloaded from the PLAZA Diatoms database <span class="citation">(Osuna-Cruz et al. 2020)</span>, and it was filtered to
-keep only TFs for demonstration purposes. The object <code>gsu</code>
-stores the protein sequences in an <code>AAStringSet</code> object.</p>
+species <em>Galdieria sulphuraria</em> as an example, as its proteome is
+very small. The proteome file was downloaded from the PLAZA Diatoms
+database <span class="citation">(Osuna-Cruz et al. 2020)</span>, and it
+was filtered to keep only TFs for demonstration purposes. The object
+<code>gsu</code> stores the protein sequences in an
+<code>AAStringSet</code> object.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span></span>
 <span><span class="va">gsu</span></span>
@@ -724,14 +726,14 @@ counts per family in each species, as well as species metadata
 the vignettes of the <em><a href="https://bioconductor.org/packages/3.15/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em>
 Bioconductor package.</p>
 <p>To demonstrate how <code><a href="../reference/get_tf_counts.html">get_tf_counts()</a></code> works, we will
-simulate a list of 5 <code>AAStringSet</code> objects by sampling 100
-random genes from the example data set <code>gsu</code> 5 times. We will
+simulate a list of 4 <code>AAStringSet</code> objects by sampling 100
+random genes from the example data set <code>gsu</code> 4 times. We will
 also create a toy species metadata data frame for each “species”
 (simulated).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span> <span class="co"># for reproducibility</span></span>
 <span></span>
-<span><span class="co"># Simulate 5 different species by sampling 100 random genes from `gsu`</span></span>
+<span><span class="co"># Simulate 4 different species by sampling 100 random genes from `gsu`</span></span>
 <span><span class="va">proteomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    Gsu1 <span class="op">=</span> <span class="va">gsu</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span>, <span class="fl">50</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>    Gsu2 <span class="op">=</span> <span class="va">gsu</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gsu</span><span class="op">)</span>, <span class="fl">50</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">]</span>,</span>
@@ -798,7 +800,7 @@ also create a toy species metadata data frame for each “species”
 <span><span class="co">#&gt; [48]   518 MRSGTTLSSLHNSHTEDATSLRA...EIGDIASLLEGEEVNYERLER* gsu32730.1</span></span>
 <span><span class="co">#&gt; [49]   287 MKASQVLASQLCELCQSANSSIY...RKQLAERRCRFKGRFIKNTAS* gsu55840.1</span></span>
 <span><span class="co">#&gt; [50]  1886 MDDTEYVPVKKRRQRILQQAKEL...TEVTRKQLIYYLSDVLANNKE* gsu43660.1</span></span></code></pre></div>
-<p>Great, now we have a list of 5 <code>AAStringSet</code> objects.
+<p>Great, now we have a list of 4 <code>AAStringSet</code> objects.
 Let’s also create a simulated species metadata data frame for each
 “species” (simulated).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
