@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="tfhunter is used to identify plant transcription factors (TFs) 
+<meta name="description" content="planttfhunter is used to identify plant transcription factors (TFs) 
     from protein sequence data and classify them into families and subfamilies
     using the classification scheme implemented in PlantTFDB.
     TFs are identified using pre-built hidden Markov model profiles
@@ -13,7 +13,7 @@
     used with DNA-binding domains to classify TFs into families and
     subfamilies (when applicable). Currently, TFs can be classified in
     58 different TF families/subfamilies.">
-<title>Identification and classification of plant transcription factors • tfhunter</title>
+<title>Identification and classification of plant transcription factors • planttfhunter</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -27,7 +27,7 @@
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Identification and classification of plant transcription factors">
-<meta property="og:description" content="tfhunter is used to identify plant transcription factors (TFs) 
+<meta property="og:description" content="planttfhunter is used to identify plant transcription factors (TFs) 
     from protein sequence data and classify them into families and subfamilies
     using the classification scheme implemented in PlantTFDB.
     TFs are identified using pre-built hidden Markov model profiles
@@ -47,7 +47,7 @@
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-#0092ac"><div class="container">
     
-    <a class="navbar-brand me-2" href="index.html">tfhunter</a>
+    <a class="navbar-brand me-2" href="index.html">planttfhunter</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.0</small>
 
@@ -64,7 +64,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/vignette_tfhunter.html">Genome-wide identification and classification of transcription factors in plant genomes</a>
+    <a class="dropdown-item" href="articles/vignette_planttfhunter.html">Genome-wide identification and classification of transcription factors in plant genomes</a>
   </div>
 </li>
 <li class="nav-item">
@@ -77,7 +77,7 @@
 
       <ul class="navbar-nav">
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/almeidasilvaf/tfhunter/" aria-label="github">
+  <a class="external-link nav-link" href="https://github.com/almeidasilvaf/planttfhunter/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -91,54 +91,38 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="tfhunter-">tfhunter <a class="anchor" aria-label="anchor" href="#tfhunter-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="planttfhunter-">planttfhunter <a class="anchor" aria-label="anchor" href="#planttfhunter-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
-<p>The goal of <strong>tfhunter</strong> is to identify plant transcription factors from protein sequence data and classify them into families and subfamilies using the classification scheme implemented in <a href="https://doi.org/10.1093/nar/gkz1020" class="external-link">PlantTFDB</a>.</p>
+<p>The goal of <strong>planttfhunter</strong> is to identify plant transcription factors from protein sequence data and classify them into families and subfamilies using the classification scheme implemented in <a href="https://doi.org/10.1093/nar/gkz1020" class="external-link">PlantTFDB</a>.</p>
 <div class="section level2">
 <h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
-<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <strong>tfhunter</strong> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
+<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <strong>planttfhunter</strong> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"tfhunter"</span><span class="op">)</span></span></code></pre></div>
-<p>And the development version from <a href="https://github.com/almeidasilvaf/tfhunter" class="external-link">GitHub</a> with:</p>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"planttfhunter"</span><span class="op">)</span></span></code></pre></div>
+<p>And the development version from <a href="https://github.com/almeidasilvaf/planttfhunter" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"almeidasilvaf/tfhunter"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"almeidasilvaf/planttfhunter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Below is the citation output from using <code>citation('tfhunter')</code> in R. Please run this yourself to check for any updates on how to cite <strong>tfhunter</strong>.</p>
+<p>Below is the citation output from using <code>citation('planttfhunter')</code> in R. Please run this yourself to check for any updates on how to cite <strong>planttfhunter</strong>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">'tfhunter'</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; To cite package 'tfhunter' in publications use:</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Almeida-Silva F, Van de Peer Y (2022). _tfhunter: Identification and</span></span>
-<span><span class="co">#&gt;   classification of plant transcription factors_. R package version</span></span>
-<span><span class="co">#&gt;   0.99.0, &lt;https://github.com/almeidasilvaf/tfhunter&gt;.</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     title = {tfhunter: Identification and classification of plant transcription factors},</span></span>
-<span><span class="co">#&gt;     author = {Fabrício Almeida-Silva and Yves {Van de Peer}},</span></span>
-<span><span class="co">#&gt;     year = {2022},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.99.0},</span></span>
-<span><span class="co">#&gt;     url = {https://github.com/almeidasilvaf/tfhunter},</span></span>
-<span><span class="co">#&gt;   }</span></span></code></pre></div>
-<p>Please note that the <strong>tfhunter</strong> project was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">'planttfhunter'</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>Please note that the <strong>planttfhunter</strong> project was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
-<p>Please note that the <strong>tfhunter</strong> project is released with a <a href="http://bioconductor.org/about/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <strong>planttfhunter</strong> project is released with a <a href="http://bioconductor.org/about/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 <div class="section level2">
 <h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
@@ -146,7 +130,7 @@
 <ul>
 <li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.15/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
 <li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
-<li>The <a href="http://almeidasilvaf.github.io/tfhunter" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
+<li>The <a href="http://almeidasilvaf.github.io/planttfhunter" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
 <li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
 </ul>
 <p>This package was developed using <em><a href="https://bioconductor.org/packages/3.15/biocthis" class="external-link">biocthis</a></em>.</p>
@@ -155,8 +139,8 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/almeidasilvaf/tfhunter/" class="external-link">Browse source code</a></li>
-<li><a href="https://support.bioconductor.org/t/tfhunter" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/almeidasilvaf/planttfhunter/" class="external-link">Browse source code</a></li>
+<li><a href="https://support.bioconductor.org/t/planttfhunter" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -178,7 +162,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing tfhunter</a></li>
+<li><a href="authors.html#citation">Citing planttfhunter</a></li>
 </ul>
 </div>
 
@@ -193,10 +177,10 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/almeidasilvaf/tfhunter/issues" class="external-link"><img src="https://img.shields.io/github/issues/almeidasilvaf/tfhunter" alt="GitHub issues"></a></li>
+<li><a href="https://github.com/almeidasilvaf/planttfhunter/issues" class="external-link"><img src="https://img.shields.io/github/issues/almeidasilvaf/planttfhunter" alt="GitHub issues"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://github.com/almeidasilvaf/tfhunter/actions" class="external-link"><img src="https://github.com/almeidasilvaf/tfhunter/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check-bioc"></a></li>
-<li><a href="https://codecov.io/gh/almeidasilvaf/tfhunter?branch=master" class="external-link"><img src="https://codecov.io/gh/almeidasilvaf/tfhunter/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/almeidasilvaf/planttfhunter/actions" class="external-link"><img src="https://github.com/almeidasilvaf/planttfhunter/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check-bioc"></a></li>
+<li><a href="https://codecov.io/gh/almeidasilvaf/planttfhunter?branch=master" class="external-link"><img src="https://codecov.io/gh/almeidasilvaf/planttfhunter/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
