@@ -5,87 +5,53 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="planttfhunter is used to identify plant transcription factors (TFs) 
-    from protein sequence data and classify them into families and subfamilies
-    using the classification scheme implemented in PlantTFDB.
-    TFs are identified using pre-built hidden Markov model profiles
-    for DNA-binding domains. Then, auxiliary and forbidden domains are
-    used with DNA-binding domains to classify TFs into families and
-    subfamilies (when applicable). Currently, TFs can be classified in
-    58 different TF families/subfamilies.">
 <title>Identification and classification of plant transcription factors • planttfhunter</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Atkinson_Hyperlegible-0.4.5/font.css" rel="stylesheet">
-<link href="deps/Source_Code_Pro-0.4.5/font.css" rel="stylesheet">
-<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Identification and classification of plant transcription factors">
-<meta property="og:description" content="planttfhunter is used to identify plant transcription factors (TFs) 
-    from protein sequence data and classify them into families and subfamilies
-    using the classification scheme implemented in PlantTFDB.
-    TFs are identified using pre-built hidden Markov model profiles
-    for DNA-binding domains. Then, auxiliary and forbidden domains are
-    used with DNA-binding domains to classify TFs into families and
-    subfamilies (when applicable). Currently, TFs can be classified in
-    58 different TF families/subfamilies.">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Atkinson_Hyperlegible-0.4.10/font.css" rel="stylesheet">
+<link href="deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Identification and classification of plant transcription factors">
+<meta name="description" content="planttfhunter is used to identify plant transcription factors (TFs) from protein sequence data and classify them into families and subfamilies using the classification schemes implemented in PlantTFDB and TAPscan. TFs are also classified into structure-based families, classes, and superclasses as in Plant-TFClass. TFs are identified using pre-built hidden Markov model profiles for DNA-binding domains. Then, auxiliary and forbidden domains are used with DNA-binding domains to classify TFs into families and subfamilies (when applicable). TFs can be classified in 58 different TF families/subfamilies with PlantTFDBs scheme, and in over 130 families of transcription-associated proteins with TAPscans scheme.">
+<meta property="og:description" content="planttfhunter is used to identify plant transcription factors (TFs) from protein sequence data and classify them into families and subfamilies using the classification schemes implemented in PlantTFDB and TAPscan. TFs are also classified into structure-based families, classes, and superclasses as in Plant-TFClass. TFs are identified using pre-built hidden Markov model profiles for DNA-binding domains. Then, auxiliary and forbidden domains are used with DNA-binding domains to classify TFs into families and subfamilies (when applicable). TFs can be classified in 58 different TF families/subfamilies with PlantTFDBs scheme, and in over 130 families of transcription-associated proteins with TAPscans scheme.">
 <meta property="og:image" content="/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-#0092ac"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-#0092ac" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="index.html">planttfhunter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.13.1</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/vignette_planttfhunter.html">Genome-wide identification and classification of transcription factors in plant genomes</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/vignette_planttfhunter.html">Genome-wide identification and classification of transcription factors in plant genomes</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/almeidasilvaf/planttfhunter/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/almeidasilvaf/planttfhunter/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-home">
 <div class="row">
@@ -96,7 +62,7 @@
 </div>
 <!-- badges: start -->
 
-<p>The goal of <strong>planttfhunter</strong> is to identify plant transcription factors from protein sequence data and classify them into families and subfamilies using the classification scheme implemented in <a href="https://doi.org/10.1093/nar/gkz1020" class="external-link">PlantTFDB</a>.</p>
+<p>The goal of <strong>planttfhunter</strong> is to identify plant transcription factors from protein sequence data and classify them into families and subfamilies using the classification schemes implemented in <a href="https://doi.org/10.1093/nar/gkw982" class="external-link">PlantTFDB</a> and <a href="https://doi.org/10.1111/tpj.17184" class="external-link">TAPscan</a>, and into structure-based families, classes, and superclasses as in <a href="https://doi.org/10.1016/j.tplants.2023.06.023" class="external-link">Plant-TFClass</a>.</p>
 <div class="section level2">
 <h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
@@ -106,10 +72,10 @@
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"planttfhunter"</span><span class="op">)</span></span></code></pre></div>
-<p>And the development version from <a href="https://github.com/almeidasilvaf/planttfhunter" class="external-link">GitHub</a> with:</p>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"planttfhunter"</span><span class="op">)</span></span></code></pre></div>
+<p>Or the development version from <a href="https://github.com/almeidasilvaf/planttfhunter" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"almeidasilvaf/planttfhunter"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"almeidasilvaf/planttfhunter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -117,39 +83,97 @@
 <p>Below is the citation output from using <code>citation('planttfhunter')</code> in R. Please run this yourself to check for any updates on how to cite <strong>planttfhunter</strong>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">'planttfhunter'</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; To cite package 'planttfhunter' in publications use:</span></span>
+<span><span class="co">#&gt; To cite planttfhunter in publications, please cite the package and the</span></span>
+<span><span class="co">#&gt; classification scheme(s) you used:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Almeida-Silva F, Van de Peer Y (2022). _planttfhunter: Identification</span></span>
-<span><span class="co">#&gt;   and classification of plant transcription factors_. R package version</span></span>
-<span><span class="co">#&gt;   0.99.0, &lt;https://github.com/almeidasilvaf/planttfhunter&gt;.</span></span>
+<span><span class="co">#&gt;   and classification of plant transcription factors_.</span></span>
+<span><span class="co">#&gt;   doi:10.18129/B9.bioc.planttfhunter</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.18129/B9.bioc.planttfhunter&gt;. R package version</span></span>
+<span><span class="co">#&gt;   1.13.1, &lt;https://bioconductor.org/packages/planttfhunter&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;   @Manual{planttfhunter,</span></span>
 <span><span class="co">#&gt;     title = {planttfhunter: Identification and classification of plant transcription factors},</span></span>
 <span><span class="co">#&gt;     author = {Fabrício Almeida-Silva and Yves {Van de Peer}},</span></span>
 <span><span class="co">#&gt;     year = {2022},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.99.0},</span></span>
-<span><span class="co">#&gt;     url = {https://github.com/almeidasilvaf/planttfhunter},</span></span>
-<span><span class="co">#&gt;   }</span></span></code></pre></div>
+<span><span class="co">#&gt;     note = {R package version 1.13.1},</span></span>
+<span><span class="co">#&gt;     doi = {10.18129/B9.bioc.planttfhunter},</span></span>
+<span><span class="co">#&gt;     url = {https://bioconductor.org/packages/planttfhunter},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Jin J, Tian F, Yang D, Meng Y, Kong L, Luo J, Gao G (2017). "PlantTFDB</span></span>
+<span><span class="co">#&gt; 4.0: toward a central hub for transcription factors and regulatory</span></span>
+<span><span class="co">#&gt; interactions in plants." _Nucleic Acids Research_, *45*(D1),</span></span>
+<span><span class="co">#&gt; D1040-D1045. doi:10.1093/nar/gkw982</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1093/nar/gkw982&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{jin2017planttfdb,</span></span>
+<span><span class="co">#&gt;     title = {PlantTFDB 4.0: toward a central hub for transcription factors and regulatory interactions in plants},</span></span>
+<span><span class="co">#&gt;     author = {Jinpu Jin and Feng Tian and De-Chang Yang and Yu-Qi Meng and Lei Kong and Jingchu Luo and Ge Gao},</span></span>
+<span><span class="co">#&gt;     journal = {Nucleic Acids Research},</span></span>
+<span><span class="co">#&gt;     volume = {45},</span></span>
+<span><span class="co">#&gt;     number = {D1},</span></span>
+<span><span class="co">#&gt;     pages = {D1040--D1045},</span></span>
+<span><span class="co">#&gt;     year = {2017},</span></span>
+<span><span class="co">#&gt;     doi = {10.1093/nar/gkw982},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Petroll R, Varshney D, Hiltemann S, Finke H, Schreiber M, de Vries J,</span></span>
+<span><span class="co">#&gt; Rensing SA (2025). "Enhanced sensitivity of TAPscan v4 enables</span></span>
+<span><span class="co">#&gt; comprehensive analysis of streptophyte transcription factor evolution."</span></span>
+<span><span class="co">#&gt; _The Plant Journal_, *121*(1), e17184. doi:10.1111/tpj.17184</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1111/tpj.17184&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{petroll2025tapscan,</span></span>
+<span><span class="co">#&gt;     title = {Enhanced sensitivity of TAPscan v4 enables comprehensive analysis of streptophyte transcription factor evolution},</span></span>
+<span><span class="co">#&gt;     author = {Romy Petroll and Deepti Varshney and Saskia Hiltemann and Hermann Finke and Mona Schreiber and Jan {de Vries} and Stefan A. Rensing},</span></span>
+<span><span class="co">#&gt;     journal = {The Plant Journal},</span></span>
+<span><span class="co">#&gt;     volume = {121},</span></span>
+<span><span class="co">#&gt;     number = {1},</span></span>
+<span><span class="co">#&gt;     pages = {e17184},</span></span>
+<span><span class="co">#&gt;     year = {2025},</span></span>
+<span><span class="co">#&gt;     doi = {10.1111/tpj.17184},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Blanc-Mathieu R, Dumas R, Turchi L, Lucas J, Parcy F (2024).</span></span>
+<span><span class="co">#&gt; "Plant-TFClass: a structural classification for plant transcription</span></span>
+<span><span class="co">#&gt; factors." _Trends in Plant Science_, *29*(1), 40-51.</span></span>
+<span><span class="co">#&gt; doi:10.1016/j.tplants.2023.06.023</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1016/j.tplants.2023.06.023&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{blancmathieu2024planttfclass,</span></span>
+<span><span class="co">#&gt;     title = {Plant-TFClass: a structural classification for plant transcription factors},</span></span>
+<span><span class="co">#&gt;     author = {Romain Blanc-Mathieu and Renaud Dumas and Laura Turchi and Jérémy Lucas and François Parcy},</span></span>
+<span><span class="co">#&gt;     journal = {Trends in Plant Science},</span></span>
+<span><span class="co">#&gt;     volume = {29},</span></span>
+<span><span class="co">#&gt;     number = {1},</span></span>
+<span><span class="co">#&gt;     pages = {40--51},</span></span>
+<span><span class="co">#&gt;     year = {2024},</span></span>
+<span><span class="co">#&gt;     doi = {10.1016/j.tplants.2023.06.023},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Example of how to cite planttfhunter and the classification schemes</span></span>
+<span><span class="co">#&gt; (remove the schemes you did not use):</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; 'TFs and their families were identified and classified with the</span></span>
+<span><span class="co">#&gt; R/Bioconductor package planttfhunter (Almeida-Silva and Van de Peer,</span></span>
+<span><span class="co">#&gt; 2022), using the classification schemes of PlantTFDB (Jin et al.,</span></span>
+<span><span class="co">#&gt; 2017), TAPscan (Petroll et al., 2025), and Plant-TFClass (Blanc-Mathieu</span></span>
+<span><span class="co">#&gt; et al., 2024).'</span></span></code></pre></div>
 <p>Please note that the <strong>planttfhunter</strong> project was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
 <p>Please note that the <strong>planttfhunter</strong> project is released with a <a href="http://bioconductor.org/about/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
-</div>
-<div class="section level2">
-<h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
-</h2>
-<ul>
-<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.15/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
-<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
-<li>The <a href="http://almeidasilvaf.github.io/planttfhunter" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
-<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
-</ul>
-<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.15/biocthis" class="external-link">biocthis</a></em>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -186,8 +210,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Fabrício Almeida-Silva <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-5314-2964" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Yves Van de Peer <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4327-3730" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Fabrício Almeida-Silva <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-5314-2964" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Yves Van de Peer <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4327-3730" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -196,7 +220,7 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/almeidasilvaf/planttfhunter/issues" class="external-link"><img src="https://img.shields.io/github/issues/almeidasilvaf/planttfhunter" alt="GitHub issues"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://github.com/almeidasilvaf/planttfhunter/actions" class="external-link"><img src="https://github.com/almeidasilvaf/planttfhunter/workflows/R-CMD-check-bioc/badge.svg" alt="R-CMD-check-bioc"></a></li>
+<li><a href="https://github.com/almeidasilvaf/planttfhunter/actions/workflows/rworkflows.devel.yml" class="external-link"><img src="https://github.com/almeidasilvaf/planttfhunter/actions/workflows/rworkflows.devel.yml/badge.svg" alt="check-bioc"></a></li>
 <li><a href="https://codecov.io/gh/almeidasilvaf/planttfhunter?branch=devel" class="external-link"><img src="https://codecov.io/gh/almeidasilvaf/planttfhunter/branch/devel/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
@@ -206,21 +230,19 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Fabrício Almeida-Silva, Yves Van de Peer.</p>
+  <p>Developed by Fabrício Almeida-Silva, Yves Van de Peer.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>
